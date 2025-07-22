@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballepu Pramod - Software Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styling */
+        :root {
+            --primary-color: #007bff; /* Blue */
+            --secondary-color: #6c757d; /* Gray */
+            --accent-color: #28a745; /* Green for success/highlights */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+            --white: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3; /* Darker blue */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: 1px solid var(--secondary-color);
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Header/Navigation */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+        header .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        header nav ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        header nav ul li {
+            margin-left: 25px;
+        }
+        header nav ul li a {
+            color: var(--white);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        header nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x800/222222/FFFFFF?text=Coding+Background') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #hero h1 {
+            color: var(--white);
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+        #hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            opacity: 0.9;
+        }
+        #hero .hero-buttons .btn {
+            font-size: 1.1em;
+            padding: 12px 25px;
+        }
+        #hero .hero-buttons .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        #hero .hero-buttons .btn-primary:hover {
+            background-color: #218838; /* Darker green */
+            border-color: #1e7e34;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+            background-color: var(--white);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        section:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* About Section */
+        #about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        #about .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        #about .profile-photo {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            flex-shrink: 0; /* Prevent shrinking on smaller screens */
+        }
+        #about .about-text {
+            flex: 1;
+            min-width: 300px; /* Ensure text takes enough space */
+            text-align: justify;
+        }
+        #about p {
+            font-size: 1.1em;
+            margin: 0 auto;
+            max-width: 900px; /* Controlled by about-text now */
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .skill-category {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease-in-out;
+        }
+        .skill-category:hover {
+            transform: translateY(-8px);
+        }
+        .skill-category h3 {
+            color: var(--dark-bg);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.6em;
+        }
+        .skill-category .skill-list-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .skill-category .skill-list-items .skill-badge {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+        .skill-category .skill-list-items .skill-badge:hover {
+            background-color: #0056b3;
+        }
+
+        /* Specific badge colors for better visual distinction */
+        .skill-category.programming .skill-badge { background-color: #007bff; }
+        .skill-category.web-tech .skill-badge { background-color: #28a745; }
+        .skill-category.cloud-tools .skill-badge { background-color: #ffc107; color: var(--dark-bg);}
+        .skill-category.soft-skills .skill-badge { background-color: #17a2b8; }
+
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+                transform: translateY(-5px);
+        }
+        .project-card .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .project-card .technologies {
+            font-size: 0.9em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .project-card ul {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            list-style: disc; /* Use bullets for descriptions */
+            margin-left: 20px;
+        }
+        .project-card ul li {
+            margin-bottom: 5px;
+        }
+        .project-card .project-links {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        .project-card .project-links .btn {
+            font-size: 0.9em;
+            padding: 8px 15px;
+        }
+
+        /* Experience and Education Sections - Simplified Card Format */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted for better layout */
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes content and details apart */
+        }
+        .info-card:hover {
+            transform: translateY(-8px);
+        }
+        .info-card h3 {
+            color: var(--dark-bg);
+            margin-bottom: 5px;
+        }
+        .info-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        .info-card p.dates {
+            font-size: 0.95em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .info-card ul {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            list-style: disc;
+            margin-left: 20px;
+        }
+        .info-card ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Certifications Section */
+        #certifications ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        #certifications li {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Contact Section */
+        #contact .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        #contact .contact-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        #contact .contact-item:hover {
+            transform: translateY(-8px);
+        }
+        #contact .contact-item .icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        #contact .contact-item h3 {
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        #contact .contact-item p {
+            font-size: 1.1em;
+            margin: 0;
+        }
+        #contact .contact-item a {
+            word-break: break-all;
+        }
+        #contact .social-links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        #contact .social-links a {
+            display: inline-block;
+            margin: 0 18px;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        #contact .social-links a:hover {
+            color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            header nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            header nav ul li {
+                margin: 0 10px;
+            }
+            #hero h1 {
+                font-size: 2.5em;
+            }
+            #hero p {
+                font-size: 1.2em;
+            }
+            .skills-grid, .info-grid, .project-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            #about .about-content {
+                flex-direction: column;
+            }
+            #about .about-text {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">BALLEPU PRAMOD</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Aspiring Software Developer | Python & Web Technologies Enthusiast</h1>
+            <p>Recent Computer Science graduate with a strong foundation in full-stack development and a passion for crafting efficient, scalable solutions.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Explore My Projects</a>
+                <a href="https://linkedin.com/in/ballepu-pramodh-4b5014299/" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="https://res.cloudinary.com/dgdhge1hy/image/upload/v1753169876/IMG_6295_PP_mnx2ky.jpg" alt="Ballepu Pramod - Passport Photo" class="profile-photo">
+                <div class="about-text">
+                    <p>As a dedicated Computer Science graduate from Teegala Krishna Reddy Engineering College, Hyderabad, I bring a robust foundation in software development and problem-solving skills. My journey has been driven by a passion for creating innovative solutions, particularly in full-stack and web development.</p>
+                    <p>I am seeking an entry-level position to apply my academic knowledge and project experience. Beyond technical prowess, I excel as a team leader and possess strong communication skills, always eager to explore new technologies and collaborate effectively within a dynamic team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category programming">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-list-items">
+                        <span class="skill-badge">Python </span>
+                        <span class="skill-badge">C </span>
+                        <span class="skill-badge">Javascript</span>
+                        <span class="skill-badge">Basics of Java</span>
+                    </div>
+                </div>
+                <div class="skill-category web-tech">
+                    <h3>Web Technologies & Frameworks</h3>
+                    <div class="skill-list-items">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">Flask (Python)</span>
+                        <span class="skill-badge">Django</span>
+                    </div>
+                </div>
+                <div class="skill-category cloud-tools">
+                    <h3>Tools</h3>
+                    <div class="skill-list-items">   
+                        <span class="skill-badge">Windows</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-category soft-skills">
+                    <h3>Other Skills</h3>
+                    <div class="skill-list-items">
+                        <span class="skill-badge">Team Leadership</span>
+                        <span class="skill-badge">Communication</span>
+                        <span class="skill-badge">Problem-Solving</span>
+                        <span class="skill-badge">Exploring New Technologies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>AGRI MARKET BUILT BY USING AWS</h3>
+                        <p class="technologies"><strong>Technologies:</strong> MERN Stack, AWS (EC2, S3, RDS)</p>
+                        <ul>
+                            <li>Built a MERN-stack application with AWS integration to directly connect farmers and buyers.</li>
+                            <li>Implemented essential features including user roles, crop listings, vehicle rentals, secure payments, and chat functionalities.</li>
+                            <li>Deployed the application via EC2, S3, and RDS for enhanced scalability and security.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>Indoor Localization Data Analytics</h3>
+                        <p class="technologies"><strong>Technologies:</strong> Python, Random Forest, MultiOutputClassifier</p>
+                        <ul>
+                            <li>Designed a real-time indoor localization system utilizing Wi-Fi and inertial sensor data from smartphones.</li>
+                            <li>Applied Random Forest with MultiOutputClassifier to accurately predict floor and building locations without requiring extra hardware.</li>
+                            <li>Developed a scalable solution for diverse applications, including smart buildings, healthcare, and emergency response.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>Visual Arts Collection Web App (Flask)</h3>
+                        <p class="technologies"><strong>Technologies:</strong> Flask, HTML, CSS</p>
+                        <ul>
+                            <li>Developed a Flask-based web app for visual arts collection.</li>
+                            <li>Enabled artwork uploads, artist profiles, categorization, search, and user authentication.</li>
+                            <li>Focused on responsive UI and seamless navigation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-content">
+                        <h3>Responsive Portfolio & Car Website Landing Page</h3>
+                        <p class="technologies"><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+                        <ul>
+                            <li>Developed a responsive portfolio site using HTML, CSS, and JavaScript to effectively showcase projects and skills.</li>
+                            <li>Created an interactive landing page for a car website with engaging visuals and feature highlights.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Full Stack Development</h3>
+                    <h4>Codegnan IT Solutions Pvt Ltd</h4>
+                    <p class="dates">May 2023 - July 2023</p>
+                    <ul>
+                        <li>Developed a Flask-based web app for visual arts collection, enabling artwork uploads, artist profiles, categorization, search, and user authentication.</li>
+                        <li>Focused on responsive UI and seamless navigation.</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Web Development</h3>
+                    <h4>EDUTANTR Courses</h4>
+                    <p class="dates">January 2024 - March 2024</p>
+                    <ul>
+                        <li>Developed a responsive portfolio site using HTML, CSS, and JavaScript to showcase projects and skills.</li>
+                        <li>Created an interactive landing page for a car website with engaging visuals and feature highlights.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Bachelors of Technology</h3>
+                    <h4>Computer Science and Engineering</h4>
+                    <p class="dates">Teegala Krishna Reddy Engineering College, Hyderabad</p>
+                    <p class="dates">2021-2025</p>
+                </div>
+                <div class="info-card">
+                    <h3>Senior Secondary (XII)</h3>
+                    <h4>Board of Intermediate Education, TG</h4>
+                    <p class="dates">Telangana State Model School and Junior College, Dharpally</p>
+                    <p class="dates">2019-2021</p>
+                </div>
+                <div class="info-card">
+                    <h3>Secondary (X)</h3>
+                    <h4>Board of Secondary Education, TG</h4>
+                    <p class="dates">Telangana State Model School and Junior College, Dharpally</p>
+                    <p class="dates">2018-2019</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Artificial Intelligence: Microsoft Azure AI 103 certificate</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope icon"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:ballepupramodh@gmail.com">ballepupramodh@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt icon"></i>
+                    <h3>Phone</h3>
+                    <p>+91 6281441713</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <h3>Location</h3>
+                    <p>Hyderabad, India</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/ballepu-pramodh-4b5014299/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1em;">I'm eager to discuss how my skills can contribute to your team. Feel free to reach out!</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ballepu Pramod. All rights reserved.</p>
+            <p>Languages Known: English, Hindi, Telugu</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
